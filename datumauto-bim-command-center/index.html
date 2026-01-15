@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DatumAuto BIM</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+            color: #e6f1ff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background: rgba(23, 42, 69, 0.8);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid #00d4ff;
+            width: 100%;
+            max-width: 400px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .logo h1 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+        }
+        .logo p {
+            color: #8892b0;
+            margin-top: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            color: #8892b0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(30, 42, 58, 0.7);
+            border: 1px solid #1e2a3a;
+            border-radius: 5px;
+            color: #e6f1ff;
+            font-size: 1rem;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #64ffda 100%);
+            border: none;
+            border-radius: 5px;
+            color: #0a192f;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        .error-message {
+            color: #ff4757;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        .demo-credentials {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        .demo-credentials h4 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+        .demo-credentials p {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1><i class="fas fa-cube"></i> DatumAuto BIM</h1>
+            <p>Command Center</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            
+            <div class="error-message" id="errorMessage">
+                Invalid credentials. Please try again.
+            </div>
+        </form>
+        
+        <div class="demo-credentials">
+            <h4>Demo Credentials:</h4>
+            <p><strong>Director:</strong> director@datumauto.com / admin123</p>
+            <p><strong>Manager:</strong> manager@datumauto.com / manager123</p>
+            <p><strong>Engineer:</strong> engineer@datumauto.com / engineer123</p>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    window.location.href = '/dashboard';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

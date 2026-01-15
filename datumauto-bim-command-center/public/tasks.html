@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - ProjectFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-project-diagram"></i> ProjectFlow</h2>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
+                <a href="tasks.html" class="active"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="team.html"><i class="fas fa-users"></i> Team</a>
+                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                <a href="messages.html"><i class="fas fa-comments"></i> Messages</a>
+                <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4A6FA5&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Project Manager</p>
+                </div>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="toggle-btn" id="toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Tasks</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search tasks...">
+                    </div>
+                    <button class="btn btn-primary" onclick="openTaskModal()">
+                        <i class="fas fa-plus"></i> New Task
+                    </button>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="list"><i class="fas fa-list"></i></button>
+                        <button class="view-btn" data-view="board"><i class="fas fa-th-large"></i></button>
+                        <button class="view-btn" data-view="calendar"><i class="fas fa-calendar"></i></button>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Task Filters -->
+                <div class="task-filters">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All Tasks</button>
+                        <button class="filter-tab">My Tasks</button>
+                        <button class="filter-tab">Assigned</button>
+                        <button class="filter-tab">Overdue</button>
+                        <button class="filter-tab">Completed</button>
+                    </div>
+                    <div class="filter-actions">
+                        <select class="filter-select">
+                            <option>All Projects</option>
+                            <option>Website Redesign</option>
+                            <option>Mobile App Launch</option>
+                            <option>Q3 Marketing Campaign</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>All Priorities</option>
+                            <option>High</option>
+                            <option>Medium</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tasks List View -->
+                <div class="tasks-list-view" id="listView">
+                    <div class="tasks-table-container">
+                        <table class="tasks-table">
+                            <thead>
+                                <tr>
+                                    <th width="40">
+                                        <input type="checkbox">
+                                    </th>
+                                    <th width="60">Priority</th>
+                                    <th>Task</th>
+                                    <th width="150">Project</th>
+                                    <th width="120">Due Date</th>
+                                    <th width="120">Assignee</th>
+                                    <th width="100">Status</th>
+                                    <th width="80">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Task 1 -->
+                                <tr class="task-row">
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span class="priority-high">High</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-title">
+                                            <h4>Design Homepage Layout</h4>
+                                            <p>Create responsive homepage design with new navigation</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="project-badge" style="background: #4A6FA5;">Website Redesign</span>
+                                    </td>
+                                    <td>
+                                        <div class="due-date overdue">
+                                            <i class="far fa-calendar"></i>
+                                            <span>May 25, 2023</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Alice&background=FF6B6B&color=fff" alt="Alice">
+                                            <span>Alice</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-in-progress">In Progress</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Task 2 -->
+                                <tr class="task-row">
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span class="priority-medium">Medium</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-title">
+                                            <h4>API Integration</h4>
+                                            <p>Integrate payment gateway API with backend</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="project-badge" style="background: #4ECDC4;">Mobile App Launch</span>
+                                    </td>
+                                    <td>
+                                        <div class="due-date">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Jun 10, 2023</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Bob&background=4ECDC4&color=fff" alt="Bob">
+                                            <span>Bob</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-pending">Pending</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Task 3 -->
+                                <tr class="task-row">
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span class="priority-high">High</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-title">
+                                            <h4>Content Strategy Document</h4>
+                                            <p>Write content strategy for new marketing campaign</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="project-badge" style="background: #FF9F80;">Q3 Marketing Campaign</span>
+                                    </td>
+                                    <td>
+                                        <div class="due-date">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Jun 5, 2023</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Charlie&background=45B7D1&color=fff" alt="Charlie">
+                                            <span>Charlie</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-completed">Completed</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Task 4 -->
+                                <tr class="task-row">
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span class="priority-low">Low</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-title">
+                                            <h4>Update Documentation</h4>
+                                            <p>Update API documentation with new endpoints</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="project-badge" style="background: #A7C5EB;">Product Documentation</span>
+                                    </td>
+                                    <td>
+                                        <div class="due-date">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Jun 15, 2023</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=David&background=96CEB4&color=fff" alt="David">
+                                            <span>David</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-in-progress">In Progress</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Task 5 -->
+                                <tr class="task-row">
+                                    <td>
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <span class="priority-medium">Medium</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-title">
+                                            <h4>User Testing Session</h4>
+                                            <p>Conduct user testing for new mobile app features</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="project-badge" style="background: #4ECDC4;">Mobile App Launch</span>
+                                    </td>
+                                    <td>
+                                        <div class="due-date">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Jun 8, 2023</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Eve&background=FFEAA7&color=333" alt="Eve">
+                                            <span>Eve</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-pending">Pending</span>
+                                    </td>
+                                    <td>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tasks Summary -->
+                    <div class="tasks-summary">
+                        <div class="summary-card">
+                            <h3>25</h3>
+                            <p>Total Tasks</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>8</h3>
+                            <p>Overdue</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>12</h3>
+                            <p>In Progress</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>5</h3>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks Board View (Hidden by default) -->
+                <div class="tasks-board-view" id="boardView" style="display: none;">
+                    <div class="board-columns">
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>To Do</h3>
+                                <span class="task-count">5</span>
+                            </div>
+                            <div class="column-tasks">
+                                <!-- Task Card -->
+                                <div class="task-card" draggable="true">
+                                    <div class="task-card-header">
+                                        <span class="priority-high">High</span>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="task-card-body">
+                                        <h4>Design Homepage Layout</h4>
+                                        <p>Create responsive homepage design with new navigation</p>
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Alice&background=FF6B6B&color=fff" alt="Alice">
+                                        </div>
+                                        <div class="due-date overdue">May 25</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>In Progress</h3>
+                                <span class="task-count">8</span>
+                            </div>
+                            <div class="column-tasks">
+                                <!-- Task Card -->
+                                <div class="task-card" draggable="true">
+                                    <div class="task-card-header">
+                                        <span class="priority-medium">Medium</span>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="task-card-body">
+                                        <h4>API Integration</h4>
+                                        <p>Integrate payment gateway API with backend</p>
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Bob&background=4ECDC4&color=fff" alt="Bob">
+                                        </div>
+                                        <div class="due-date">Jun 10</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>Review</h3>
+                                <span class="task-count">4</span>
+                            </div>
+                            <div class="column-tasks">
+                                <!-- Task Card -->
+                                <div class="task-card" draggable="true">
+                                    <div class="task-card-header">
+                                        <span class="priority-low">Low</span>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="task-card-body">
+                                        <h4>Update Documentation</h4>
+                                        <p>Update API documentation with new endpoints</p>
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=David&background=96CEB4&color=fff" alt="David">
+                                        </div>
+                                        <div class="due-date">Jun 15</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-column">
+                            <div class="column-header">
+                                <h3>Done</h3>
+                                <span class="task-count">3</span>
+                            </div>
+                            <div class="column-tasks">
+                                <!-- Task Card -->
+                                <div class="task-card" draggable="true">
+                                    <div class="task-card-header">
+                                        <span class="priority-high">High</span>
+                                        <div class="task-actions">
+                                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="task-card-body">
+                                        <h4>Content Strategy Document</h4>
+                                        <p>Write content strategy for new marketing campaign</p>
+                                    </div>
+                                    <div class="task-card-footer">
+                                        <div class="assignee">
+                                            <img src="https://ui-avatars.com/api/?name=Charlie&background=45B7D1&color=fff" alt="Charlie">
+                                        </div>
+                                        <div class="due-date">Jun 5</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Task</h3>
+                <button class="close-modal" onclick="closeTaskModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newTaskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title *</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" rows="3" placeholder="Describe the task..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskProject">Project</label>
+                            <select id="taskProject">
+                                <option value="">Select Project</option>
+                                <option value="1">Website Redesign</option>
+                                <option value="2">Mobile App Launch</option>
+                                <option value="3">Q3 Marketing Campaign</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskAssignee">Assignee</label>
+                            <select id="taskAssignee">
+                                <option value="">Unassigned</option>
+                                <option value="1">Alice</option>
+                                <option value="2">Bob</option>
+                                <option value="3">Charlie</option>
+                                <option value="4">David</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskTags">Tags</label>
+                        <input type="text" id="taskTags" placeholder="Add tags (comma separated)">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="createTask()">Create Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // View toggle functionality
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const listView = document.getElementById('listView');
+        const boardView = document.getElementById('boardView');
+
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const view = this.dataset.view;
+                
+                if (view === 'list') {
+                    listView.style.display = 'block';
+                    boardView.style.display = 'none';
+                } else if (view === 'board') {
+                    listView.style.display = 'none';
+                    boardView.style.display = 'block';
+                } else if (view === 'calendar') {
+                    alert('Calendar view coming soon!');
+                }
+            });
+        });
+
+        // Task modal functions
+        function openTaskModal() {
+            document.getElementById('taskModal').style.display = 'flex';
+        }
+
+        function closeTaskModal() {
+            document.getElementById('taskModal').style.display = 'none';
+        }
+
+        function createTask() {
+            const title = document.getElementById('taskTitle').value;
+            if (!title) {
+                alert('Please enter a task title');
+                return;
+            }
+            
+            alert('Task created successfully!');
+            closeTaskModal();
+            // Reset form
+            document.getElementById('newTaskForm').reset();
+        }
+
+        // Drag and drop for board view
+        const tasks = document.querySelectorAll('.task-card');
+        const columns = document.querySelectorAll('.board-column');
+
+        tasks.forEach(task => {
+            task.addEventListener('dragstart', () => {
+                task.classList.add('dragging');
+            });
+
+            task.addEventListener('dragend', () => {
+                task.classList.remove('dragging');
+            });
+        });
+
+        columns.forEach(column => {
+            column.addEventListener('dragover', e => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(column, e.clientY);
+                const draggable = document.querySelector('.dragging');
+                
+                if (afterElement == null) {
+                    column.querySelector('.column-tasks').appendChild(draggable);
+                } else {
+                    column.querySelector('.column-tasks').insertBefore(draggable, afterElement);
+                }
+            });
+        });
+
+        function getDragAfterElement(column, y) {
+            const draggableElements = [...column.querySelectorAll('.task-card:not(.dragging)')];
+            
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('taskModal');
+            if (e.target === modal) {
+                closeTaskModal();
+            }
+        });
+    </script>
+</body>
+</html>

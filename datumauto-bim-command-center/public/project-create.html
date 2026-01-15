@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project - ProjectFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-project-diagram"></i> ProjectFlow</h2>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
+                <a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="team.html"><i class="fas fa-users"></i> Team</a>
+                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                <a href="messages.html"><i class="fas fa-comments"></i> Messages</a>
+                <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4A6FA5&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Project Manager</p>
+                </div>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="toggle-btn" id="toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Create New Project</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="form-container">
+                    <form id="projectForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectName">Project Name *</label>
+                                <input type="text" id="projectName" placeholder="Enter project name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="projectCategory">Category</label>
+                                <select id="projectCategory">
+                                    <option value="">Select Category</option>
+                                    <option value="web">Web Development</option>
+                                    <option value="mobile">Mobile App</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="design">Design</option>
+                                    <option value="research">Research</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectDescription">Project Description</label>
+                            <textarea id="projectDescription" rows="4" placeholder="Describe the project goals, objectives, and scope..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate">End Date</label>
+                                <input type="date" id="endDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectStatus">Status</label>
+                                <select id="projectStatus">
+                                    <option value="planning">Planning</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="on-hold">On Hold</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Team</label>
+                            <div class="team-selection">
+                                <div class="selected-team">
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Alice&background=FF6B6B&color=fff" alt="Alice">
+                                        <span>Alice</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Bob&background=4ECDC4&color=fff" alt="Bob">
+                                        <span>Bob</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Charlie&background=45B7D1&color=fff" alt="Charlie">
+                                        <span>Charlie</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <button type="button" class="add-member-btn" onclick="openTeamModal()">
+                                        <i class="fas fa-plus"></i> Add Team Members
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectBudget">Budget ($)</label>
+                            <input type="number" id="projectBudget" placeholder="0.00" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectTags">Tags</label>
+                            <div class="tags-input">
+                                <div class="tags-container">
+                                    <span class="tag">Website<i class="fas fa-times"></i></span>
+                                    <span class="tag">Redesign<i class="fas fa-times"></i></span>
+                                    <span class="tag">UI/UX<i class="fas fa-times"></i></span>
+                                </div>
+                                <input type="text" id="projectTags" placeholder="Add a tag and press Enter">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Template</label>
+                            <div class="template-selector">
+                                <div class="template-option">
+                                    <input type="radio" id="templateBlank" name="template" value="blank" checked>
+                                    <label for="templateBlank">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h4>Blank Project</h4>
+                                        <p>Start from scratch</p>
+                                    </label>
+                                </div>
+                                <div class="template-option">
+                                    <input type="radio" id="templateWeb" name="template" value="web">
+                                    <label for="templateWeb">
+                                        <i class="fas fa-laptop-code"></i>
+                                        <h4>Web Development</h4>
+                                        <p>Pre-configured for web projects</p>
+                                    </label>
+                                </div>
+                                <div class="template-option">
+                                    <input type="radio" id="templateMarketing" name="template" value="marketing">
+                                    <label for="templateMarketing">
+                                        <i class="fas fa-bullhorn"></i>
+                                        <h4>Marketing Campaign</h4>
+                                        <p>Designed for marketing teams</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='projects.html'">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Create Project
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Modal -->
+    <div class="modal" id="teamModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Team Members</h3>
+                <button class="close-modal" onclick="closeTeamModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search team members...">
+                </div>
+                <div class="team-list">
+                    <div class="team-member selectable">
+                        <img src="https://ui-avatars.com/api/?name=David&background=96CEB4&color=fff" alt="David">
+                        <div>
+                            <h4>David Chen</h4>
+                            <p>Frontend Developer</p>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+                    <div class="team-member selectable">
+                        <img src="https://ui-avatars.com/api/?name=Eve&background=FFEAA7&color=333" alt="Eve">
+                        <div>
+                            <h4>Eve Rodriguez</h4>
+                            <p>UX Designer</p>
+                        </div>
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="team-member selectable">
+                        <img src="https://ui-avatars.com/api/?name=Frank&background=DDA0DD&color=fff" alt="Frank">
+                        <div>
+                            <h4>Frank Wilson</h4>
+                            <p>Backend Developer</p>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+                    <div class="team-member selectable">
+                        <img src="https://ui-avatars.com/api/?name=Grace&background=98D8C8&color=fff" alt="Grace">
+                        <div>
+                            <h4>Grace Lee</h4>
+                            <p>Project Manager</p>
+                        </div>
+                        <input type="checkbox" checked>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeTeamModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="addSelectedMembers()">Add Selected</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openTeamModal() {
+            document.getElementById('teamModal').style.display = 'flex';
+        }
+
+        function closeTeamModal() {
+            document.getElementById('teamModal').style.display = 'none';
+        }
+
+        function addSelectedMembers() {
+            closeTeamModal();
+            // In a real app, this would add the selected members to the form
+            alert('Team members added!');
+        }
+
+        // Form submission
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Project created successfully!');
+            window.location.href = 'projects.html';
+        });
+    </script>
+</body>
+</html>

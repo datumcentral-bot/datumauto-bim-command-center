@@ -1,0 +1,58 @@
+{
+  "name": "datumauto-bim-command-center",
+  "version": "1.0.0",
+  "description": "Complete BIM Project Management System with DeepSeek AI Automation",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "setup": "node server/scripts/setup.js",
+    "import-excel": "node server/scripts/importExcel.js",
+    "test": "jest",
+    "pm2-start": "pm2 start server/index.js --name datumauto-bim",
+    "pm2-stop": "pm2 stop datumauto-bim",
+    "pm2-restart": "pm2 restart datumauto-bim",
+    "pm2-logs": "pm2 logs datumauto-bim"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.8.1",
+    "connect-sqlite3": "^0.9.16",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7",
+    "socket.io": "^4.7.2",
+    "sqlite3": "^5.1.6",
+    "winston": "^3.11.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "bim",
+    "construction",
+    "project-management",
+    "ai",
+    "deepseek",
+    "datumauto",
+    "middle-east",
+    "director-projects"
+  ],
+  "author": "DatumAuto BIM Team",
+  "license": "Proprietary"
+}

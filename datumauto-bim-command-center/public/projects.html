@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - ProjectFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-project-diagram"></i> ProjectFlow</h2>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="projects.html" class="active"><i class="fas fa-briefcase"></i> Projects</a>
+                <a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="team.html"><i class="fas fa-users"></i> Team</a>
+                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                <a href="messages.html"><i class="fas fa-comments"></i> Messages</a>
+                <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4A6FA5&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Project Manager</p>
+                </div>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="toggle-btn" id="toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Projects</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search projects...">
+                    </div>
+                    <button class="btn btn-primary" onclick="window.location.href='project-create.html'">
+                        <i class="fas fa-plus"></i> New Project
+                    </button>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <button class="filter-btn active">All Projects</button>
+                        <button class="filter-btn">Active</button>
+                        <button class="filter-btn">Completed</button>
+                        <button class="filter-btn">On Hold</button>
+                    </div>
+                    <div class="sort-dropdown">
+                        <select>
+                            <option>Sort by: Newest</option>
+                            <option>Sort by: Oldest</option>
+                            <option>Sort by: Name</option>
+                            <option>Sort by: Deadline</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status status-in-progress">
+                                <i class="fas fa-sync-alt"></i> In Progress
+                            </div>
+                            <div class="project-actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Website Redesign</h3>
+                            <p>Complete overhaul of company website with modern design and improved UX</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Due: Jun 30, 2023</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>12/25 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <span>65%</span>
+                            </div>
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://ui-avatars.com/api/?name=Alice&background=FF6B6B&color=fff" alt="Alice">
+                                    <img src="https://ui-avatars.com/api/?name=Bob&background=4ECDC4&color=fff" alt="Bob">
+                                    <img src="https://ui-avatars.com/api/?name=Charlie&background=45B7D1&color=fff" alt="Charlie">
+                                    <span class="more">+2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status status-completed">
+                                <i class="fas fa-check-circle"></i> Completed
+                            </div>
+                            <div class="project-actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Mobile App Launch</h3>
+                            <p>Development and launch of new mobile application for iOS and Android</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Due: May 15, 2023</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>45/45 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <span>100%</span>
+                            </div>
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://ui-avatars.com/api/?name=David&background=96CEB4&color=fff" alt="David">
+                                    <img src="https://ui-avatars.com/api/?name=Eve&background=FFEAA7&color=333" alt="Eve">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status status-planning">
+                                <i class="fas fa-clipboard-list"></i> Planning
+                            </div>
+                            <div class="project-actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Q3 Marketing Campaign</h3>
+                            <p>Planning and execution of Q3 digital marketing campaign across all channels</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Due: Aug 15, 2023</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>5/18 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%"></div>
+                                </div>
+                                <span>28%</span>
+                            </div>
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://ui-avatars.com/api/?name=Frank&background=DDA0DD&color=fff" alt="Frank">
+                                    <img src="https://ui-avatars.com/api/?name=Grace&background=98D8C8&color=fff" alt="Grace">
+                                    <img src="https://ui-avatars.com/api/?name=Henry&background=F7DC6F&color=333" alt="Henry">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status status-on-hold">
+                                <i class="fas fa-pause-circle"></i> On Hold
+                            </div>
+                            <div class="project-actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>CRM System Migration</h3>
+                            <p>Migration from legacy CRM to new cloud-based solution with data transfer</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Due: TBD</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>8/32 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%"></div>
+                                </div>
+                                <span>25%</span>
+                            </div>
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://ui-avatars.com/api/?name=Ivy&background=FF9F80&color=fff" alt="Ivy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-status status-in-progress">
+                                <i class="fas fa-sync-alt"></i> In Progress
+                            </div>
+                            <div class="project-actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Product Documentation</h3>
+                            <p>Create comprehensive user manuals and technical documentation for new product</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Due: Jul 20, 2023</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>18/30 tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span>60%</span>
+                            </div>
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://ui-avatars.com/api/?name=Jack&background=A7C5EB&color=fff" alt="Jack">
+                                    <img src="https://ui-avatars.com/api/?name=Kathy&background=FEC8D8&color=333" alt="Kathy">
+                                    <span class="more">+1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Project Card -->
+                    <div class="project-card add-project" onclick="window.location.href='project-create.html'">
+                        <div class="add-project-content">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>Create New Project</h3>
+                            <p>Start a new project from scratch or use a template</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project - ProjectFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-project-diagram"></i> ProjectFlow</h2>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
+                <a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="team.html"><i class="fas fa-users"></i> Team</a>
+                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                <a href="messages.html"><i class="fas fa-comments"></i> Messages</a>
+                <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4A6FA5&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Project Manager</p>
+                </div>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="toggle-btn" id="toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <a href="projects.html">Projects</a>
+                        <span>/</span>
+                        <h1>Edit Project</h1>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <button class="btn btn-danger" id="deleteBtn">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="form-container">
+                    <form id="editProjectForm">
+                        <div class="form-header">
+                            <div class="project-status-badge status-in-progress">
+                                <i class="fas fa-sync-alt"></i> In Progress
+                            </div>
+                            <div class="form-header-actions">
+                                <button type="button" class="btn btn-outline">
+                                    <i class="fas fa-copy"></i> Duplicate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editProjectName">Project Name *</label>
+                                <input type="text" id="editProjectName" value="Website Redesign" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editProjectCode">Project Code</label>
+                                <input type="text" id="editProjectCode" value="WR-2023-001" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProjectDescription">Project Description</label>
+                            <textarea id="editProjectDescription" rows="4">Complete overhaul of company website with modern design and improved user experience. This project includes new responsive design, CMS migration, and performance optimization.</textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editStartDate">Start Date</label>
+                                <input type="date" id="editStartDate" value="2023-04-15">
+                            </div>
+                            <div class="form-group">
+                                <label for="editEndDate">End Date</label>
+                                <input type="date" id="editEndDate" value="2023-06-30">
+                            </div>
+                            <div class="form-group">
+                                <label for="editProjectStatus">Status</label>
+                                <select id="editProjectStatus">
+                                    <option value="planning">Planning</option>
+                                    <option value="in-progress" selected>In Progress</option>
+                                    <option value="on-hold">On Hold</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editProjectBudget">Budget ($)</label>
+                                <input type="number" id="editProjectBudget" value="15000" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label for="editProjectPriority">Priority</label>
+                                <select id="editProjectPriority">
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high" selected>High</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editProjectProgress">Progress (%)</label>
+                                <input type="range" id="editProjectProgress" min="0" max="100" value="65">
+                                <div class="progress-display">65%</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Team</label>
+                            <div class="team-selection">
+                                <div class="selected-team">
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Alice&background=FF6B6B&color=fff" alt="Alice">
+                                        <span>Alice (Lead)</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Bob&background=4ECDC4&color=fff" alt="Bob">
+                                        <span>Bob</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=Charlie&background=45B7D1&color=fff" alt="Charlie">
+                                        <span>Charlie</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="team-member selected">
+                                        <img src="https://ui-avatars.com/api/?name=David&background=96CEB4&color=fff" alt="David">
+                                        <span>David</span>
+                                        <button type="button" class="remove-member"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <button type="button" class="add-member-btn" onclick="openEditTeamModal()">
+                                        <i class="fas fa-plus"></i> Add Team Members
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Milestones</label>
+                            <div class="milestones-list">
+                                <div class="milestone">
+                                    <div class="milestone-header">
+                                        <h4>Design Phase Complete</h4>
+                                        <div class="milestone-status completed">
+                                            <i class="fas fa-check-circle"></i> Completed
+                                        </div>
+                                    </div>
+                                    <p>All design mockups and prototypes approved</p>
+                                    <div class="milestone-date">Completed: May 10, 2023</div>
+                                </div>
+                                <div class="milestone">
+                                    <div class="milestone-header">
+                                        <h4>Development Sprint 1</h4>
+                                        <div class="milestone-status in-progress">
+                                            <i class="fas fa-sync-alt"></i> In Progress
+                                        </div>
+                                    </div>
+                                    <p>Frontend development and component library</p>
+                                    <div class="milestone-date">Due: June 15, 2023</div>
+                                </div>
+                                <div class="milestone">
+                                    <div class="milestone-header">
+                                        <h4>Testing & QA</h4>
+                                        <div class="milestone-status pending">
+                                            <i class="far fa-clock"></i> Pending
+                                        </div>
+                                    </div>
+                                    <p>User testing and quality assurance</p>
+                                    <div class="milestone-date">Due: June 25, 2023</div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline" style="margin-top: 10px;">
+                                <i class="fas fa-plus"></i> Add Milestone
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Attachments</label>
+                            <div class="attachments">
+                                <div class="attachment">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <div>
+                                        <h4>Project_Brief.pdf</h4>
+                                        <p>2.4 MB · Uploaded May 12, 2023</p>
+                                    </div>
+                                    <button class="btn-icon"><i class="fas fa-download"></i></button>
+                                </div>
+                                <div class="attachment">
+                                    <i class="fas fa-file-image"></i>
+                                    <div>
+                                        <h4>Design_Mockups.zip</h4>
+                                        <p>15.8 MB · Uploaded May 18, 2023</p>
+                                    </div>
+                                    <button class="btn-icon"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline" style="margin-top: 10px;">
+                                <i class="fas fa-paperclip"></i> Add Attachment
+                            </button>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='projects.html'">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3>Delete Project</h3>
+                <button class="close-modal" onclick="closeDeleteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p>Are you sure you want to delete <strong>"Website Redesign"</strong>?</p>
+                <p class="text-muted">This action cannot be undone. All project data, tasks, and files will be permanently deleted.</p>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="confirmDelete">Type "DELETE" to confirm:</label>
+                    <input type="text" id="confirmDelete" placeholder="DELETE">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete Project</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Progress slider
+        const progressSlider = document.getElementById('editProjectProgress');
+        const progressDisplay = document.querySelector('.progress-display');
+        
+        progressSlider.addEventListener('input', function() {
+            progressDisplay.textContent = this.value + '%';
+        });
+
+        // Delete modal
+        document.getElementById('deleteBtn').addEventListener('click', function() {
+            document.getElementById('deleteModal').style.display = 'flex';
+        });
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Confirm delete validation
+        const confirmInput = document.getElementById('confirmDelete');
+        const confirmBtn = document.getElementById('confirmDeleteBtn');
+        
+        confirmInput.addEventListener('input', function() {
+            confirmBtn.disabled = this.value !== 'DELETE';
+        });
+
+        confirmBtn.addEventListener('click', function() {
+            alert('Project deleted successfully!');
+            window.location.href = 'projects.html';
+        });
+
+        // Form submission
+        document.getElementById('editProjectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Project updated successfully!');
+            window.location.href = 'projects.html';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('deleteModal');
+            if (e.target === modal) {
+                closeDeleteModal();
+            }
+        });
+    </script>
+</body>
+</html>

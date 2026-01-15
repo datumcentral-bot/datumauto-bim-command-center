@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DatumAuto BIM Command Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+            color: #e6f1ff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background: rgba(23, 42, 69, 0.9);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid #00d4ff;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .logo h1 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .logo p {
+            color: #8892b0;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            color: #8892b0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(30, 42, 58, 0.8);
+            border: 1px solid #1e2a3a;
+            border-radius: 5px;
+            color: #e6f1ff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+        }
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #64ffda 100%);
+            border: none;
+            border-radius: 5px;
+            color: #0a192f;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+        .error-message {
+            color: #ff4757;
+            margin-top: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            display: none;
+        }
+        .demo-credentials {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        .demo-credentials h4 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .demo-credentials p {
+            color: #8892b0;
+            font-size: 0.8rem;
+            margin: 0.3rem 0;
+        }
+        .demo-credentials strong {
+            color: #64ffda;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .loading i {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1><i class="fas fa-cube"></i> DatumAuto BIM</h1>
+            <p>Command Center</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Logging in...</p>
+            </div>
+            
+            <button type="submit" class="btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            
+            <div class="error-message" id="errorMessage">
+                Invalid credentials. Please try again.
+            </div>
+        </form>
+        
+        <div class="demo-credentials">
+            <h4><i class="fas fa-info-circle"></i> Demo Credentials:</h4>
+            <p><strong>Director:</strong> director@datumauto.com / admin123</p>
+            <p><strong>Manager:</strong> manager@datumauto.com / manager123</p>
+            <p><strong>Engineer:</strong> engineer@datumauto.com / engineer123</p>
+            <p><strong>Architect:</strong> architect@datumauto.com / architect123</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+            const loading = document.getElementById('loading');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Check if already logged in
+            checkAuthStatus();
+            
+            // Auto-fill demo credentials for testing
+            emailInput.value = 'director@datumauto.com';
+            passwordInput.value = 'admin123';
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                
+                if (!email || !password) {
+                    showError('Please enter both email and password');
+                    return;
+                }
+                
+                // Show loading, disable button
+                loading.style.display = 'block';
+                loginBtn.disabled = true;
+                errorMessage.style.display = 'none';
+                
+                try {
+                    const response = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        console.log('Login successful:', data.user);
+                        window.location.href = '/dashboard';
+                    } else {
+                        showError(data.error || 'Invalid credentials');
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showError('Network error. Please try again.');
+                } finally {
+                    loading.style.display = 'none';
+                    loginBtn.disabled = false;
+                }
+            });
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                
+                // Auto-hide error after 5 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+            
+            async function checkAuthStatus() {
+                try {
+                    const response = await fetch('/api/auth/check');
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    }
+                } catch (error) {
+                    // Not authenticated, stay on login page
+                }
+            }
+        });
+    </script>
+</body>
+</html>

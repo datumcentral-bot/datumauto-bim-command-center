@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - ProjectFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-project-diagram"></i> ProjectFlow</h2>
+            </div>
+            <nav class="menu">
+                <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a>
+                <a href="tasks.html"><i class="fas fa-tasks"></i> Tasks</a>
+                <a href="team.html" class="active"><i class="fas fa-users"></i> Team</a>
+                <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                <a href="messages.html"><i class="fas fa-comments"></i> Messages</a>
+                <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+                <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4A6FA5&color=fff" alt="User">
+                <div>
+                    <h4>John Doe</h4>
+                    <p>Project Manager</p>
+                </div>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="toggle-btn" id="toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Team</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search team members...">
+                    </div>
+                    <button class="btn btn-primary" onclick="openInviteModal()">
+                        <i class="fas fa-user-plus"></i> Invite Member
+                    </button>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Team Stats -->
+                <div class="team-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #4A6FA5;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>24</h3>
+                            <p>Total Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #4ECDC4;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Active Projects</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #FF6B6B;">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>142</h3>
+                            <p>Tasks This Month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #96CEB4;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>85%</h3>
+                            <p>Productivity Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Members -->
+                <div class="team-section">
+                    <div class="section-header">
+                        <h2>Team Members</h2>
+                        <div class="view-options">
+                            <button class="btn btn-outline"><i class="fas fa-th-large"></i> Grid</button>
+                            <button class="btn btn-outline active"><i class="fas fa-list"></i> List</button>
+                        </div>
+                    </div>
+
+                    <div class="team-members-list">
+                        <!-- Team Member 1 -->
+                        <div class="team-member-card">
+                            <div class="member-info">
+                                <img src="https://ui-avatars.com/api/?name=Alice+Johnson&background=FF6B6B&color=fff" alt="Alice">
+                                <div class="member-details">
+                                    <h3>Alice Johnson</h3>
+                                    <p class="member-role">Lead Designer</p>
+                                    <div class="member-tags">
+                                        <span class="tag">UI/UX</span>
+                                        <span class="tag">Prototyping</span>
+                                        <span class="tag">Research</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-stats">
+                                <div class="stat">
+                                    <h4>3</h4>
+                                    <p>Projects</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>18</h4>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>92%</h4>
+                                    <p>Complete</p>
+                                </div>
+                            </div>
+                            <div class="member-projects">
+                                <div class="project-indicator" style="background: #4A6FA5;" title="Website Redesign"></div>
+                                <div class="project-indicator" style="background: #4ECDC4;" title="Mobile App Launch"></div>
+                                <div class="project-indicator" style="background: #FF9F80;" title="Q3 Marketing"></div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 2 -->
+                        <div class="team-member-card">
+                            <div class="member-info">
+                                <img src="https://ui-avatars.com/api/?name=Bob+Smith&background=4ECDC4&color=fff" alt="Bob">
+                                <div class="member-details">
+                                    <h3>Bob Smith</h3>
+                                    <p class="member-role">Senior Developer</p>
+                                    <div class="member-tags">
+                                        <span class="tag">Frontend</span>
+                                        <span class="tag">React</span>
+                                        <span class="tag">API</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-stats">
+                                <div class="stat">
+                                    <h4>2</h4>
+                                    <p>Projects</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>24</h4>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>87%</h4>
+                                    <p>Complete</p>
+                                </div>
+                            </div>
+                            <div class="member-projects">
+                                <div class="project-indicator" style="background: #4A6FA5;" title="Website Redesign"></div>
+                                <div class="project-indicator" style="background: #4ECDC4;" title="Mobile App Launch"></div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 3 -->
+                        <div class="team-member-card">
+                            <div class="member-info">
+                                <img src="https://ui-avatars.com/api/?name=Charlie+Brown&background=45B7D1&color=fff" alt="Charlie">
+                                <div class="member-details">
+                                    <h3>Charlie Brown</h3>
+                                    <p class="member-role">Content Strategist</p>
+                                    <div class="member-tags">
+                                        <span class="tag">Content</span>
+                                        <span class="tag">SEO</span>
+                                        <span class="tag">Marketing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-stats">
+                                <div class="stat">
+                                    <h4>4</h4>
+                                    <p>Projects</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>16</h4>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>100%</h4>
+                                    <p>Complete</p>
+                                </div>
+                            </div>
+                            <div class="member-projects">
+                                <div class="project-indicator" style="background: #4A6FA5;" title="Website Redesign"></div>
+                                <div class="project-indicator" style="background: #FF9F80;" title="Q3 Marketing"></div>
+                                <div class="project-indicator" style="background: #A7C5EB;" title="Documentation"></div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 4 -->
+                        <div class="team-member-card">
+                            <div class="member-info">
+                                <img src="https://ui-avatars.com/api/?name=David+Chen&background=96CEB4&color=fff" alt="David">
+                                <div class="member-details">
+                                    <h3>David Chen</h3>
+                                    <p class="member-role">Backend Developer</p>
+                                    <div class="member-tags">
+                                        <span class="tag">Node.js</span>
+                                        <span class="tag">Database</span>
+                                        <span class="tag">Security</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-stats">
+                                <div class="stat">
+                                    <h4>3</h4>
+                                    <p>Projects</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>22</h4>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>78%</h4>
+                                    <p>Complete</p>
+                                </div>
+                            </div>
+                            <div class="member-projects">
+                                <div class="project-indicator" style="background: #4ECDC4;" title="Mobile App Launch"></div>
+                                <div class="project-indicator" style="background: #A7C5EB;" title="Documentation"></div>
+                                <div class="project-indicator" style="background: #DDA0DD;" title="CRM Migration"></div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 5 -->
+                        <div class="team-member-card">
+                            <div class="member-info">
+                                <img src="https://ui-avatars.com/api/?name=Eve+Rodriguez&background=FFEAA7&color=333" alt="Eve">
+                                <div class="member-details">
+                                    <h3>Eve Rodriguez</h3>
+                                    <p class="member-role">UX Researcher</p>
+                                    <div class="member-tags">
+                                        <span class="tag">Research</span>
+                                        <span class="tag">Testing</span>
+                                        <span class="tag">Analytics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-stats">
+                                <div class="stat">
+                                    <h4>2</h4>
+                                    <p>Projects</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>12</h4>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>83%</h4>
+                                    <p>Complete</p>
+                                </div>
+                            </div>
+                            <div class="member-projects">
+                                <div class="project-indicator" style="background: #4A6FA5;" title="Website Redesign"></div>
+                                <div class="project-indicator" style="background: #4ECDC4;" title="Mobile App Launch"></div>
+                            </div>
+                            <div class="member-actions">
+                                <button class="btn-icon"><i class="fas fa-envelope"></i></button>
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departments -->
+                <div class="team-section">
+                    <div class="section-header">
+                        <h2>Departments</h2>
+                    </div>
+
+                    <div class="departments-grid">
+                        <div class="department-card">
+                            <div class="department-icon" style="background: #4A6FA5;">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Development</h3>
+                            <p class="department-count">8 Members</p>
+                            <div class="department-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <span>85% Active</span>
+                            </div>
+                        </div>
+
+                        <div class="department-card">
+                            <div class="department-icon" style="background: #FF6B6B;">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3>Design</h3>
+                            <p class="department-count">5 Members</p>
+                            <div class="department-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                                <span>92% Active</span>
+                            </div>
+                        </div>
+
+                        <div class="department-card">
+                            <div class="department-icon" style="background: #4ECDC4;">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Marketing</h3>
+                            <p class="department-count">6 Members</p>
+                            <div class="department-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <span>78% Active</span>
+                            </div>
+                        </div>
+
+                        <div class="department-card">
+                            <div class="department-icon" style="background: #96CEB4;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Operations</h3>
+                            <p class="department-count">3 Members</p>
+                            <div class="department-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                                <span>95% Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Modal -->
+    <div class="modal" id="inviteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Invite Team Member</h3>
+                <button class="close-modal" onclick="closeInviteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="inviteForm">
+                    <div class="form-group">
+                        <label for="inviteEmail">Email Address *</label>
+                        <input type="email" id="inviteEmail" placeholder="colleague@company.com" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inviteRole">Role</label>
+                            <select id="inviteRole">
+                                <option value="member">Team Member</option>
+                                <option value="manager">Project Manager</option>
+                                <option value="admin">Administrator</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inviteDepartment">Department</label>
+                            <select id="inviteDepartment">
+                                <option value="">Select Department</option>
+                                <option value="development">Development</option>
+                                <option value="design">Design</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="operations">Operations</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Projects</label>
+                        <div class="projects-select">
+                            <div class="project-option">
+                                <input type="checkbox" id="project1">
+                                <label for="project1">Website Redesign</label>
+                            </div>
+                            <div class="project-option">
+                                <input type="checkbox" id="project2">
+                                <label for="project2">Mobile App Launch</label>
+                            </div>
+                            <div class="project-option">
+                                <input type="checkbox" id="project3">
+                                <label for="project3">Q3 Marketing Campaign</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inviteMessage">Personal Message (Optional)</label>
+                        <textarea id="inviteMessage" rows="3" placeholder="Add a personal message to the invitation..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeInviteModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="sendInvite()">Send Invitation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function openInviteModal() {
+            document.getElementById('inviteModal').style.display = 'flex';
+        }
+
+        function closeInviteModal() {
+            document.getElementById('inviteModal').style.display = 'none';
+        }
+
+        function sendInvite() {
+            const email = document.getElementById('inviteEmail').value;
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+            
+            alert('Invitation sent to ' + email);
+            closeInviteModal();
+            // Reset form
+            document.getElementById('inviteForm').reset();
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('inviteModal');
+            if (e.target === modal) {
+                closeInviteModal();
+            }
+        });
+
+        // View toggle for team members
+        const viewButtons = document.querySelectorAll('.view-options .btn');
+        viewButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // In a real app, this would switch between grid and list views
+                if (this.querySelector('.fa-th-large')) {
+                    document.querySelector('.team-members-list').classList.add('grid-view');
+                } else {
+                    document.querySelector('.team-members-list').classList.remove('grid-view');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
